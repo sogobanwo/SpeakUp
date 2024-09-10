@@ -23,7 +23,7 @@ export default function ConnectButton() {
         <Button
           onClick={() => open()}
           variant={"outline"}
-          className="w-40 text-base lg:w-60 bg-[#F3F3F3] text-black lg:text-xl font-semibold"
+          className="w-40 text-base lg:w-60 bg-[#F3F3F3] text-black lg:text-xl font-semibold py-2 h-12"
           translate="no"
         >
           Connect Wallet
