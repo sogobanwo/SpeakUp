@@ -1,4 +1,5 @@
 # SpeakUp
+![image](https://github.com/user-attachments/assets/01b5ebe9-6e5a-48f8-a03f-b0c2884b3303)
 
 ## Overview
 SpeakUp is a decentralized platform for open discussions and polls, built on the Ethereum blockchain. It allows users to create topics, add comments, participate in polls, and earn badges based on their engagement.
@@ -19,11 +20,9 @@ The SpeakUp frontend is built using Next.JS and provides a user-friendly interfa
 
 ## Getting Started
 
-### Contract Deployment
+### Contract Installation
 Clone the repository: git clone https://github.com/sogobanwo/SpeakUp.git
 Install dependencies: npm install
-Compile the contract: npx hardhat compile
-Deploy the contract: npx hardhat deploy
 
 ### Frontend Setup
 Install dependencies: ```npm install```
