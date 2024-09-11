@@ -1,8 +1,8 @@
 "use client"
 
 import { useCallback } from "react";
-import { getProvider } from "../../constants/provider";
-import { getContract } from "../../constants/contracts";
+import { getProvider } from "../../constants/provider.js";
+import { getContract } from "../../constants/contracts.js";
 import {
   useWeb3ModalAccount,
   useWeb3ModalProvider,

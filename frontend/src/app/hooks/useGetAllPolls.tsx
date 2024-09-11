@@ -2,8 +2,8 @@
 // import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 
 import { useState, useEffect } from "react";
-import {readOnlyProvider} from "../../constants/provider"
-import {getContract} from "../../constants/contracts"
+import {readOnlyProvider} from "../../constants/provider.js"
+import {getContract} from "../../constants/contracts.js"
 
 const useGetAllPoll = () => {
   const [data, setData] = useState({loading: true, data: []});

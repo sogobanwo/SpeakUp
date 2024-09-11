@@ -1,30 +1,36 @@
-"use client"
-// import { useWeb3ModalAccount } from "@web3modal/ethers/react";
-
 import { useState, useEffect } from "react";
-import {readOnlyProvider} from "../../constants/provider"
-import {getContract} from "../../constants/contracts"
+import { readOnlyProvider } from "../../constants/provider.js";
+import { getContract } from "../../constants/contracts.js";
 
-const useGetallTopics = () => {
-  const [data, setData] = useState({loading: true, data: []});
+interface UseGetAllTopicsResponse {
+  loading: boolean;
+  data: any[];
+  error?: string;
+}
+
+const useGetAllTopics = (): UseGetAllTopicsResponse => {
+  const [data, setData] = useState<UseGetAllTopicsResponse>({
+    loading: true,
+    data: [],
+  });
 
   useEffect(() => {
-    let allTopics;
-     (async () => {
+    const fetchTopics = async () => {
       try {
         const contract = getContract(readOnlyProvider);
-        allTopics = await contract.getTopics()
-        setData({loading: false, data: allTopics});
-    } catch (error) {
+        const allTopics = await contract.getTopics();
+        const unwrappedTopics = [...allTopics];
+        setData({ loading: false, data: unwrappedTopics });
+      } catch (error) {
         console.error(error);
-      } finally {
-        // setData({loading: false, data: allTopics});
+        setData({ loading: false, data: [], error: "Failed to fetch topics" });
       }
-    })();
-    console.log(data)
-}, []);
-return data
+    };
 
+    fetchTopics();
+  }, [readOnlyProvider]);
+
+  return data;
 };
 
-export default useGetallTopics;
+export default useGetAllTopics;

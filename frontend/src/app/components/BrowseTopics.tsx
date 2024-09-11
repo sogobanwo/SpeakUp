@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Select,
   SelectContent,
@@ -7,13 +9,22 @@ import {
 } from "@/components/ui/select";
 import React from "react";
 import TopicCard from "./TopicCard";
-import baby from "../../assets/baby-image.png"
+import baby from "../../assets/baby-image.png";
+import useGetallTopics from "../hooks/useGetAllTopic";
 
 type Props = {};
 
-
-
 const BrowseTopics = (props: Props) => {
+  const { loading, data, error } = useGetallTopics();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div>
       <h1 className="my-3 font-bold text-4xl text-center">
@@ -32,7 +43,9 @@ const BrowseTopics = (props: Props) => {
         </Select>
       </div>
       <div className="flex gap-8">
-        <TopicCard url="/" topic="Child Support Crisis" image={baby}/>
+        {data.map((topic: { id: any; title: string }) => (
+          <TopicCard key={topic.id} url={`/topics/${topic.id}`} topic={topic.title} image={baby} />
+        ))}
       </div>
     </div>
   );

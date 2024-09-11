@@ -1,30 +1,37 @@
-"use client"
-// import { useWeb3ModalAccount } from "@web3modal/ethers/react";
+"use client";
 
 import { useState, useEffect } from "react";
-import {readOnlyProvider} from "../../constants/provider"
-import {getContract} from "../../constants/contracts"
+import { readOnlyProvider } from "../../constants/provider.js";
+import { getContract } from "../../constants/contracts.js";
 
-const useGetComments = (id: number) => {
-  const [data, setData] = useState({loading: true, data: []});
+interface UseGetCommentsResponse {
+  loading: boolean;
+  data: any[];
+  error?: string;
+}
+
+const useGetComments = (id: number): UseGetCommentsResponse => {
+  const [data, setData] = useState<UseGetCommentsResponse>({
+    loading: true,
+    data: [],
+  });
 
   useEffect(() => {
-    let allTopics;
-     (async () => {
+    const fetchComments = async () => {
       try {
         const contract = getContract(readOnlyProvider);
-        allTopics = await contract.getComments(id)
-        setData({loading: false, data: allTopics});
-    } catch (error) {
+        const comments = await contract.getComments(id);
+        setData({ loading: false, data: comments });
+      } catch (error) {
         console.error(error);
-      } finally {
-        // setData({loading: false, data: allTopics});
+        setData({ loading: false, data: [], error: "Failed to fetch comments" });
       }
-    })();
-    console.log(data)
-}, []);
-return data
+    };
 
+    fetchComments();
+  }, [id]);
+
+  return data;
 };
 
 export default useGetComments;

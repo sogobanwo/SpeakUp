@@ -1,6 +1,6 @@
 "use client";
 
-import { createWeb3Modal, useWeb3Modal, useWeb3ModalAccount } from "@web3modal/ethers/react";
+import {  useWeb3Modal, useWeb3ModalAccount } from "@web3modal/ethers/react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { configureWeb3Modal } from "../context/web3modal";
@@ -18,7 +18,7 @@ export default function ConnectButton() {
   return (
     <>
       {isClient && isConnected ? (
-        <w3m-button />
+        <w3m-account-button />
       ) : (
         <Button
           onClick={() => open()}

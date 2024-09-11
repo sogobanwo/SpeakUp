@@ -2,13 +2,12 @@ import Comments from '@/app/components/Comments'
 import CommentsHero from '@/app/components/CommentsHero'
 import React from 'react'
 
-type Props = {}
 
-const page = (props: Props) => {
+const page = ({ params }: { params: { id: string } }) => {
   return (
     <>
-      <CommentsHero />
-      <Comments />
+      <CommentsHero comm={params.id}/>
+      <Comments id={Number(params.id)}/>
     </>
   )
 }
