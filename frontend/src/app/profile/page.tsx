@@ -38,14 +38,10 @@ const ProfilePage = (props: Props) => {
       <Tabs defaultValue="topics" className="w-full">
         <TabsList>
           <TabsTrigger value="topics">Topics</TabsTrigger>
-          <TabsTrigger value="comments">Comments</TabsTrigger>
           <TabsTrigger value="badges">Badges</TabsTrigger>
         </TabsList>
         <TabsContent value="topics">
           <TopicProfile />
-        </TabsContent>
-        <TabsContent value="comments">
-          <CommentProfile />
         </TabsContent>
         <TabsContent value="badges">
           <CommentPostAchievements />

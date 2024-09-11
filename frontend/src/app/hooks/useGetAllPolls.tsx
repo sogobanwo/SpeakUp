@@ -1,30 +1,37 @@
-"use client"
-// import { useWeb3ModalAccount } from "@web3modal/ethers/react";
+"use client";
 
 import { useState, useEffect } from "react";
-import {readOnlyProvider} from "../../constants/provider.js"
-import {getContract} from "../../constants/contracts.js"
+import { readOnlyProvider } from "../../constants/provider.js";
+import { getContract } from "../../constants/contracts.js";
 
-const useGetAllPoll = () => {
-  const [data, setData] = useState({loading: true, data: []});
+interface UseGetAllPollResponse {
+  loading: boolean;
+  data: any[];
+  error?: string;
+}
+
+const useGetAllPolls = (): UseGetAllPollResponse => {
+  const [data, setData] = useState<UseGetAllPollResponse>({
+    loading: true,
+    data: [],
+  });
 
   useEffect(() => {
-    let allPoll;
-     (async () => {
+    const fetchPolls = async () => {
       try {
         const contract = getContract(readOnlyProvider);
-        allPoll = await contract.getPolls()
-        setData({loading: false, data: allPoll});
-    } catch (error) {
+        const polls = await contract.getPolls();
+        setData({ loading: false, data: polls });
+      } catch (error) {
         console.error(error);
-      } finally {
-        // setData({loading: false, data: allPoll});
+        setData({ loading: false, data: [], error: "Failed to fetch polls" });
       }
-    })();
-    console.log(data)
-}, []);
-return data
+    };
 
+    fetchPolls();
+  }, []);
+
+  return data;
 };
 
-export default useGetAllPoll;
+export default useGetAllPolls;

@@ -11,11 +11,15 @@ import React from "react";
 import TopicCard from "./TopicCard";
 import baby from "../../assets/baby-image.png";
 import useGetallTopics from "../hooks/useGetAllTopic";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import PollSection from "./PollSection";
 
 type Props = {};
 
 const BrowseTopics = (props: Props) => {
   const { loading, data, error } = useGetallTopics();
+
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -42,11 +46,24 @@ const BrowseTopics = (props: Props) => {
           </SelectContent>
         </Select>
       </div>
-      <div className="flex gap-8">
+      <Tabs defaultValue="topics" className="w-full">
+        <TabsList>
+          <TabsTrigger value="topics">Topics</TabsTrigger>
+          <TabsTrigger value="polls">Polls</TabsTrigger>
+        </TabsList>
+        <TabsContent value="topics">
+        <div className="flex gap-8">
         {data.map((topic: { id: any; title: string }) => (
           <TopicCard key={topic.id} url={`/topics/${topic.id}`} topic={topic.title} image={baby} />
         ))}
       </div>
+        </TabsContent>
+        <TabsContent value="polls">
+          <PollSection />
+        </TabsContent>
+      </Tabs>
+  
+    
     </div>
   );
 };
