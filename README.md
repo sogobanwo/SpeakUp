@@ -1,11 +1,74 @@
-In an era where social media giants wield unprecedented power over public discourse, we saw a pressing need for change. The inspiration for SpeakUp came from witnessing the alarming rise of censorship and the spread of distorted information across popular platforms. We observed how centralized control led to biased moderation, shadow banning, and the suppression of diverse viewpoints.
-A pivotal moment occurred when a whistleblower's crucial information was systematically removed from major social networks, effectively silencing a voice that needed to be heard. This incident made us realize that the very platforms meant to connect us were, in fact, controlling the narrative and deciding what information we should consume.
-Building SpeakUp
-Driven by the vision of a truly free and transparent platform, we embarked on the journey to create SpeakUp. Our goal was clear: to build a decentralized space where every voice matters and no single entity holds the power to silence others.
+# SpeakUp
 
+## Overview
+SpeakUp is a decentralized platform for open discussions and polls, built on the Ethereum blockchain. It allows users to create topics, add comments, participate in polls, and earn badges based on their engagement.
 
+## Contract Description
+The SpeakUp contract includes the following functionality:
+* Topic Management: Create, view, and comment on topics.
+* Poll Management: Create, view, and participate in polls.
+* Badge System: Earn badges based on engagement (Bronze, Silver, Gold).
+* Commenting: Add comments to topics.
 
-The Road Ahead
-SpeakUp is more than just a platform; it's a movement towards digital freedom. As we continue to grow and evolve, we remain committed to our core principles of anonymity, transparency, and decentralization.
-We envision a future where SpeakUp becomes the go-to platform for open dialogue, whistleblowing, and unfiltered news. By putting the power back in the hands of the community, we aim to reshape the landscape of online communication and restore trust in digital interactions.
-Our journey with SpeakUp has just begun, and we're excited to see how this experiment in digital democracy unfolds. We believe that by providing a space for truly free expression, we can foster a more informed, engaged, and empowered global community.
+## Frontend Description
+The SpeakUp frontend is built using Next.JS and provides a user-friendly interface for interacting with the contract. Features include:
+* Topic Dashboard: View and create new topics.
+* Poll Dashboard: View and create new polls.
+* Commenting System: Add comments to topics.
+* Badge Display: View earned badges.
+
+## Getting Started
+
+### Contract Deployment
+Clone the repository: git clone https://github.com/sogobanwo/SpeakUp.git
+Install dependencies: npm install
+Compile the contract: npx hardhat compile
+Deploy the contract: npx hardhat deploy
+
+### Frontend Setup
+Install dependencies: ```npm install```
+Start the frontend: ```npm run dev```
+
+## Contract Address
+* SpeakUp Contract Address: 0x3D9775D7D4A6Fc7A6BD4393df459AB05c8d91b61
+
+## Functions
+### createTopic
+* Access: Public
+* Description: creates a new topic.
+
+### createPoll
+* Access: Public
+* Description: Creates a new poll.
+
+### addComment
+* Access: Public
+* Description: Adds a comment to a topic.
+
+### vote
+* Access: Public
+* Description: Participates in a poll.
+
+### getBadge
+* Access: Public View
+* Description: Returns the badge earned by a user.
+
+### Events
+#### NewTopic
+* Description: Emitted when a new topic is created.
+
+#### NewPoll
+* Description: Emitted when a new poll is created.
+
+#### NewComment
+* Description: Emitted when a new comment is added.
+
+#### NewVote
+* Description: Emitted when a user participates in a poll.
+
+## Authors
+Banwo Olorunsogo
+Victor Kenneth
+
+## License
+This project is licensed under the MIT License
